@@ -1,0 +1,112 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Briefcase, MapPin, Calendar } from "lucide-react";
+
+const experiences = [
+  {
+    company: "BeeLogical Software Solutions",
+    role: "Tech Intern — Software Developer",
+    location: "Pune, Maharashtra",
+    period: "July 2025 – Present",
+    current: true,
+    responsibilities: [
+      "Working on microservices-based product architecture with API Gateway handling client requests via REST APIs",
+      "Designed and developed a Drive Service for file upload, retrieval, and access management as an independent microservice",
+      "Implemented internal service-to-service communication using gRPC between API Gateway and backend",
+      "Built scalable backend APIs using Nest.js and PostgreSQL with proper role-based access control",
+      "Developed dynamic and reusable frontend modules using Angular, including Data Tables, Employee Directory, Roles & Permissions, Kanban Board, and Calendar",
+    ],
+  },
+  {
+    company: "Colombo AI",
+    role: "Backend Developer Intern",
+    location: "Remote",
+    period: "August 2024 – December 2024",
+    current: false,
+    responsibilities: [
+      "Developed a chat messaging backend, gaining hands-on experience with web sockets",
+      "Utilized MongoDB, Express, Node.js, and JavaScript for backend development",
+      "Implemented the backend for Vibes/Story Repost feature",
+      "Ensured seamless integration with the frontend to enhance system functionality",
+    ],
+  },
+];
+
+const ExperienceSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section id="experience" className="py-20 bg-secondary/20" ref={ref}>
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+            <span className="font-mono text-primary mr-2">03.</span>
+            Experience
+          </h2>
+          <p className="text-muted-foreground mb-12 max-w-2xl">
+            My professional journey and the companies I've contributed to.
+          </p>
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
+
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
+                className="relative pl-8 md:pl-20"
+              >
+                {/* Timeline dot */}
+                <div className={`absolute left-0 md:left-8 top-2 w-3 h-3 rounded-full -translate-x-1/2 ${exp.current ? "bg-primary animate-pulse-glow" : "bg-muted-foreground"}`} />
+
+                <div className="bg-card border border-border rounded-xl p-6 card-hover">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold">{exp.role}</h3>
+                      <div className="flex items-center gap-2 text-primary font-semibold">
+                        <Briefcase className="w-4 h-4" />
+                        {exp.company}
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-start md:items-end gap-1 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {exp.period}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        {exp.location}
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-3">
+                    {exp.responsibilities.map((resp, i) => (
+                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ExperienceSection;
