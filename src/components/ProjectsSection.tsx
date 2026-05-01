@@ -4,16 +4,32 @@ import { ExternalLink, Github, Chrome } from "lucide-react";
 
 const projects = [
   {
+    title: "BikersBrain",
+    description: "Full-stack e-commerce platform for bike spare parts and accessories with end-to-end deployment.",
+    tech: ["Supabase", "PostgreSQL", "Razorpay", "Brevo", "Cloudinary", "Gemini API"],
+    github: "",
+    live: "https://www.bikersbrain.in/",
+    type: "project",
+    highlights: [
+      "End-to-end deployment for a scalable e-commerce architecture",
+      "Integrated Supabase (PostgreSQL) for database management",
+      "Implemented secure payments with Razorpay and automated emails with Brevo",
+      "Integrated Cloudinary for efficient image storage and delivery",
+      "AI-powered product assistant using Gemini API to auto-generate product details",
+      "Admin dashboard to manage products, inventory, orders, and users",
+    ],
+  },
+  {
     title: "MedVerify",
-    description: "A Medical Deepfake Image Detection System using microservices architecture. Built prediction service with FastAPI using trained CNN models for real-time deepfake detection.",
-    tech: ["React.js", "FastAPI", "Node.js", "Express.js", "MongoDB", "TailwindCSS"],
+    description: "Medical deepfake detection system built with microservices, real-time image classification, and secure REST APIs.",
+    tech: ["React", "Tailwind CSS", "FastAPI", "Node.js", "Express.js", "MongoDB"],
     github: "https://github.com/Kunalkudande/medverify",
     live: "https://medverify-beta.vercel.app/",
     type: "project",
     highlights: [
-      "Microservices architecture",
-      "CNN models for deepfake detection",
-      "Deployed on Vercel & Hugging Face",
+      "FastAPI prediction service for real-time classification",
+      "Secure authentication and REST APIs with Node.js and Express.js",
+      "Responsive UI with React and Tailwind CSS",
     ],
   },
   {
@@ -114,15 +130,17 @@ const ProjectsSection = () => {
                   </div>
 
                   <div className="flex gap-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <Github className="w-4 h-4" />
-                      View Code
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <Github className="w-4 h-4" />
+                        View Code
+                      </a>
+                    )}
                     {project.live && (
                       <a
                         href={project.live}

@@ -76,8 +76,9 @@ const HeroSection = () => {
               transition={{ delay: 0.5 }}
               className="text-muted-foreground max-w-lg mb-8 text-lg"
             >
-              I build things for the web. Passionate about creating efficient, 
-              scalable applications and exploring AI-powered development tools.
+              Software engineer with experience building scalable full-stack applications
+              using Angular, NestJS, Node.js, and PostgreSQL. Focused on microservices
+              architecture and high-performance backend services for multi-tenant SaaS.
             </motion.p>
 
             {/* Social Links */}
