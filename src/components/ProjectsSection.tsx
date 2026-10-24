@@ -5,13 +5,14 @@ import { ExternalLink, Github, Chrome } from "lucide-react";
 const projects = [
   {
     title: "BikersBrain",
+    period: "Dec 2025 – Present",
     description: "Full-stack e-commerce platform for bike spare parts and accessories with end-to-end deployment.",
-    tech: ["Supabase", "PostgreSQL", "Razorpay", "Brevo", "Cloudinary", "Gemini API"],
+    tech: ["React", "Node.js", "Express.js", "PostgreSQL", "Prisma", "Supabase", "Razorpay", "Brevo", "Cloudinary", "Gemini API"],
     github: "",
     live: "https://www.bikersbrain.in/",
-    type: "project",
+    type: "Full-Stack E-Commerce",
     highlights: [
-      "End-to-end deployment for a scalable e-commerce architecture",
+      "Built and deployed customer shopping workflows and backend APIs",
       "Integrated Supabase (PostgreSQL) for database management",
       "Implemented secure payments with Razorpay and automated emails with Brevo",
       "Integrated Cloudinary for efficient image storage and delivery",
@@ -20,16 +21,28 @@ const projects = [
     ],
   },
   {
-    title: "MedVerify",
-    description: "Medical deepfake detection system built with microservices, real-time image classification, and secure REST APIs.",
-    tech: ["React", "Tailwind CSS", "FastAPI", "Node.js", "Express.js", "MongoDB"],
-    github: "https://github.com/Kunalkudande/medverify",
-    live: "https://medverify-beta.vercel.app/",
-    type: "project",
+    title: "Hermes – AI Agent and Workflow Automation",
+    period: "Sep 2026 – Present",
+    description: "Configured Hermes with LLM API routing, Telegram access, and scheduled workflows for everyday tasks.",
+    tech: ["Python", "JavaScript", "Node.js", "Telegram", "Groq API", "OpenRouter", "Gemini API", "Oracle Cloud", "Vercel", "Linux"],
+    type: "AI Workflow Automation",
     highlights: [
-      "FastAPI prediction service for real-time classification",
-      "Secure authentication and REST APIs with Node.js and Express.js",
-      "Responsive UI with React and Tailwind CSS",
+      "Added routing across free LLM APIs and connected Telegram for chat and task requests",
+      "Configured scheduled generation and publishing of posts on X",
+      "Set up Naukri profile updates twice daily",
+      "Added daily and on-demand email digests with the top five AI news updates",
+      "Deployed on an Oracle Cloud Ubuntu VPS with a web dashboard for schedules, run reports, and server status",
+    ],
+  },
+  {
+    title: "XAUUSD Trading Automation",
+    period: "Mar 2026 – Present",
+    description: "A MetaTrader 5 Expert Advisor that executes a predefined XAUUSD strategy with configurable position and risk settings.",
+    tech: ["MQL5", "MetaTrader 5", "Azure VPS"],
+    type: "Trading Automation",
+    highlights: [
+      "Automated strategy execution and position management with configurable lot and risk settings",
+      "Deployed on an Azure VPS for persistent remote execution and monitoring",
     ],
   },
   {
@@ -75,7 +88,7 @@ const ProjectsSection = () => {
             Projects
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            Some things I've built — from web apps to browser extensions.
+            Full-stack applications, AI workflows, and automation projects, alongside browser extensions.
           </p>
         </motion.div>
 
@@ -97,13 +110,14 @@ const ProjectsSection = () => {
                       <ExternalLink className="w-5 h-5 text-primary" />
                     )}
                     <span className="font-mono text-xs text-primary uppercase tracking-wider">
-                      {project.type === "extension" ? "Chrome Extension" : "Web App"}
+                      {project.type === "extension" ? "Chrome Extension" : project.type}
                     </span>
                   </div>
 
                   <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
+                  {project.period && <p className="font-mono text-xs text-primary mb-4">{project.period}</p>}
 
                   <p className="text-muted-foreground mb-4 leading-relaxed">
                     {project.description}
@@ -111,8 +125,8 @@ const ProjectsSection = () => {
 
                   <ul className="space-y-2 mb-6">
                     {project.highlights.map((highlight) => (
-                      <li key={highlight} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <li key={highlight} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="w-1.5 h-1.5 mt-1.5 shrink-0 bg-primary rounded-full" />
                         {highlight}
                       </li>
                     ))}

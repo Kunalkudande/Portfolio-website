@@ -4,11 +4,11 @@ import { GraduationCap, MapPin, Calendar } from "lucide-react";
 
 const education = [
   {
-    institution: "International Institute of Information Technology (I2IT)",
+    institution: "International Institute of Information Technology (I2IT / ISquareIT)",
     degree: "B.E - Information Technology",
     period: "2021 – 2025",
     location: "Pune, Maharashtra",
-    grade: "CGPA - 8.2",
+    grade: "CGPA - 8.4 / 10",
   },
   {
     institution: "Sant Tukaram English Medium School & Junior College",
@@ -75,6 +75,15 @@ const EducationSection = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-10 bg-card border border-border rounded-xl p-6">
+          <h3 className="text-xl font-bold mb-4">Achievements & Certifications</h3>
+          <ul className="list-disc pl-5 space-y-3 text-muted-foreground">
+            <li>Rockstar Rookie 2025 at BeeLogical Software Solutions for internship contributions.</li>
+            <li>Solved 250+ coding problems across LeetCode and GeeksforGeeks.</li>
+            <li>Completed the Full-Stack Web Development program from 100xDevs.</li>
+            <li>SQL (Basic) certification from HackerRank.</li>
+          </ul>
         </div>
       </div>
     </section>

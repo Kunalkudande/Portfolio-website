@@ -7,6 +7,8 @@ const techSkills = [
   { name: "TypeScript", category: "Language" },
   { name: "C++", category: "Language" },
   { name: "SQL", category: "Language" },
+  { name: "Python", category: "Language" },
+  { name: "Next.js", category: "Frontend" },
   { name: "Angular", category: "Frontend" },
   { name: "React", category: "Frontend" },
   { name: "Tailwind CSS", category: "Frontend" },
@@ -23,12 +25,16 @@ const techSkills = [
   { name: "Microservices", category: "Architecture" },
   { name: "API Gateway", category: "Architecture" },
   { name: "Multi-Tenant Systems", category: "Architecture" },
+  { name: "RBAC", category: "Architecture" },
+  { name: "Azure", category: "Cloud" },
+  { name: "Oracle Cloud", category: "Cloud" },
   { name: "AWS S3", category: "Cloud" },
   { name: "Redis", category: "Cloud" },
   { name: "RabbitMQ", category: "Cloud" },
   { name: "Git", category: "Tools" },
   { name: "GitHub", category: "Tools" },
   { name: "Postman", category: "Tools" },
+  { name: "Swagger", category: "Tools" },
   { name: "Docker", category: "Tools" },
 ];
 
@@ -37,8 +43,11 @@ const aiTools = [
   { name: "ChatGPT", description: "AI assistant" },
   { name: "Claude AI", description: "AI assistant" },
   { name: "Cursor IDE", description: "AI-first code editor" },
-  { name: "Groq API", description: "Fast inference" },
+  { name: "Gemini", description: "AI assistant" },
+  { name: "Perplexity", description: "Research assistant" },
 ];
+
+const llmApis = ["Gemini API", "Groq API", "OpenRouter", "LLM API routing", "Workflow automation"];
 
 const SkillsSection = () => {
   const ref = useRef(null);
@@ -57,10 +66,9 @@ const SkillsSection = () => {
             Skills & Tools
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            Technologies I work with and AI tools that supercharge my productivity.
+            Technologies I use across professional work and personal projects, plus AI tools for coding and research.
           </p>
         </motion.div>
-
         {/* Tech Stack */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -110,6 +118,12 @@ const SkillsSection = () => {
             ))}
           </div>
         </motion.div>
+        <div className="mt-10">
+          <h3 className="font-mono text-primary mb-6 text-sm uppercase tracking-wider">LLM APIs & Automation</h3>
+          <div className="flex flex-wrap gap-3">
+            {llmApis.map((name) => <span key={name} className="px-4 py-2 bg-card border border-border rounded-lg font-mono text-sm">{name}</span>)}
+          </div>
+        </div>
       </div>
     </section>
   );

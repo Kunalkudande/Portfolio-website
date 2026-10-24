@@ -16,7 +16,8 @@ const Footer = () => {
           Let's Connect
         </h3>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-          I'm currently looking for new opportunities. Feel free to reach out!
+          Open to Software Engineer, SDE, and Full Stack roles in Pune, Mumbai,
+          Bengaluru, Hyderabad, or remote. Feel free to reach out!
         </p>
 
         <a

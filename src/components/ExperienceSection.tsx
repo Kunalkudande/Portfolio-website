@@ -7,22 +7,26 @@ const experiences = [
     company: "BeeLogical Software Solutions",
     role: "Jr. Software Engineer",
     location: "Pune, Maharashtra",
-    period: "Feb 2026 – Present",
+    period: "Oct 2025 – Present",
     current: true,
     responsibilities: [
+      "Develop frontend and backend features for a multi-tenant coworking SaaS platform supporting bookings, users, and tenant-specific workflows",
+      "Enhance React.js modules with UI and layout updates and integrate tenant-facing features with backend services",
+      "Implement role-based access control (RBAC) and maintain User Management workflows for users, roles, and permissions",
       "Implemented direct client-to-cloud uploads using AWS S3 pre-signed URLs to reduce backend load and improve upload performance",
       "Integrated Redis caching across core services to reduce repeated database queries and improve API response times",
       "Implemented asynchronous communication using RabbitMQ for heavy background tasks from request processing",
+      "Investigate and resolve production defects across frontend and backend modules",
     ],
   },
   {
     company: "BeeLogical Software Solutions",
     role: "Tech Intern — Full Stack Developer",
     location: "Pune, Maharashtra",
-    period: "Jul 2025 – Jan 2026",
+    period: "Jul 2025 – Oct 2025",
     current: false,
     responsibilities: [
-      "Designed and developed microservices architecture for a multi-tenant SaaS platform using NestJS and gRPC",
+      "Developed NestJS backend services with PostgreSQL for tenant-aware SaaS workflows and connected microservices using gRPC",
       "Built core backend services including API Gateway, Authentication Service, Drive Service, and Notification Service",
       "Developed a configuration-driven dynamic data table supporting filtering, sorting, pagination, and row-level actions",
       "Built reusable Angular modules including Employee Directory, Roles and Permissions, Kanban Board, and Calendar",
@@ -70,7 +74,7 @@ const ExperienceSection = () => {
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
-                key={exp.company}
+                key={`${exp.company}-${exp.role}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}

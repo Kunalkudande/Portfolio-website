@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Code2, Trophy } from "lucide-react";
+import { Github, Linkedin, Twitter, Code2, Trophy, Download, Mail } from "lucide-react";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/Kunalkudande", label: "GitHub" },
@@ -67,7 +67,7 @@ const HeroSection = () => {
               transition={{ delay: 0.4 }}
               className="text-2xl md:text-3xl lg:text-4xl font-semibold text-muted-foreground mb-6"
             >
-              Software Developer
+              Software Engineer | Full Stack
             </motion.h2>
             
             <motion.p
@@ -76,10 +76,19 @@ const HeroSection = () => {
               transition={{ delay: 0.5 }}
               className="text-muted-foreground max-w-lg mb-8 text-lg"
             >
-              Software engineer with experience building scalable full-stack applications
-              using Angular, NestJS, Node.js, and PostgreSQL. Focused on microservices
-              architecture and high-performance backend services for multi-tenant SaaS.
+              I build full-stack applications with React, TypeScript, Node.js, NestJS,
+              and PostgreSQL. My work spans multi-tenant SaaS, backend services,
+              e-commerce, and practical AI workflow automation.
             </motion.p>
+
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
+              <a href="/Kunal_Kudande_Resume.pdf" download className="inline-flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
+                <Download className="w-4 h-4" /> Download Resume
+              </a>
+              <a href="mailto:kudandekunal1410@gmail.com" className="inline-flex items-center gap-2 px-5 py-3 border border-border rounded-lg hover:border-primary transition-colors">
+                <Mail className="w-4 h-4" /> Get in Touch
+              </a>
+            </div>
 
             {/* Social Links */}
             <motion.div
