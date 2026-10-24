@@ -10,12 +10,12 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="py-16 border-t border-border">
+    <footer id="contact" className="py-16 md:py-20 border-t border-border bg-secondary/15">
       <div className="section-container text-center">
         <h3 className="text-2xl md:text-3xl font-bold mb-4">
-          Let's Connect
+          Let's build something useful.
         </h3>
-        <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+        <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
           Open to Software Engineer, SDE, and Full Stack roles in Pune, Mumbai,
           Bengaluru, Hyderabad, or remote. Feel free to reach out!
         </p>

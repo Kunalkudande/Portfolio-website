@@ -1,132 +1,24 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-
-const techSkills = [
-  { name: "JavaScript", category: "Language" },
-  { name: "TypeScript", category: "Language" },
-  { name: "C++", category: "Language" },
-  { name: "SQL", category: "Language" },
-  { name: "Python", category: "Language" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "Angular", category: "Frontend" },
-  { name: "React", category: "Frontend" },
-  { name: "Tailwind CSS", category: "Frontend" },
-  { name: "Node.js", category: "Backend" },
-  { name: "NestJS", category: "Backend" },
-  { name: "Express.js", category: "Backend" },
-  { name: "REST APIs", category: "Backend" },
-  { name: "gRPC", category: "Backend" },
-  { name: "WebSockets", category: "Backend" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Prisma", category: "Database" },
-  { name: "Supabase", category: "Database" },
-  { name: "Microservices", category: "Architecture" },
-  { name: "API Gateway", category: "Architecture" },
-  { name: "Multi-Tenant Systems", category: "Architecture" },
-  { name: "RBAC", category: "Architecture" },
-  { name: "Azure", category: "Cloud" },
-  { name: "Oracle Cloud", category: "Cloud" },
-  { name: "AWS S3", category: "Cloud" },
-  { name: "Redis", category: "Cloud" },
-  { name: "RabbitMQ", category: "Cloud" },
-  { name: "Git", category: "Tools" },
-  { name: "GitHub", category: "Tools" },
-  { name: "Postman", category: "Tools" },
-  { name: "Swagger", category: "Tools" },
-  { name: "Docker", category: "Tools" },
+import { Code2, Layers, Database, Cloud, Sparkles, Workflow } from "lucide-react";
+const groups = [
+  { title: "Frontend", icon: Code2, items: ["React", "Next.js", "Angular", "TypeScript", "JavaScript", "Tailwind CSS"] },
+  { title: "Backend & systems", icon: Layers, items: ["Node.js", "NestJS", "Express.js", "REST APIs", "gRPC", "WebSockets", "Microservices", "RBAC", "Multi-tenancy", "API Gateway"] },
+  { title: "Data & infrastructure", icon: Database, items: ["PostgreSQL", "MongoDB", "Prisma", "Supabase", "Redis", "RabbitMQ"] },
+  { title: "Cloud & developer tools", icon: Cloud, items: ["AWS S3", "Azure", "Oracle Cloud", "Docker", "Git", "GitHub", "Postman", "Swagger"] },
 ];
-
-const aiTools = [
-  { name: "GitHub Copilot", description: "AI pair programming" },
-  { name: "ChatGPT", description: "AI assistant" },
-  { name: "Claude AI", description: "AI assistant" },
-  { name: "Cursor IDE", description: "AI-first code editor" },
-  { name: "Gemini", description: "AI assistant" },
-  { name: "Perplexity", description: "Research assistant" },
-];
-
-const llmApis = ["Gemini API", "Groq API", "OpenRouter", "LLM API routing", "Workflow automation"];
-
-const SkillsSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section id="skills" className="py-20 bg-secondary/20" ref={ref}>
-      <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            <span className="font-mono text-primary mr-2">01.</span>
-            Skills & Tools
-          </h2>
-          <p className="text-muted-foreground mb-12 max-w-2xl">
-            Technologies I use across professional work and personal projects, plus AI tools for coding and research.
-          </p>
-        </motion.div>
-        {/* Tech Stack */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16"
-        >
-          <h3 className="font-mono text-primary mb-6 text-sm uppercase tracking-wider">
-            Tech Stack
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {techSkills.map((skill, index) => (
-              <motion.span
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.1 + index * 0.03 }}
-                className="px-4 py-2 bg-card border border-border rounded-lg font-mono text-sm hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default"
-              >
-                {skill.name}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* AI Tools */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h3 className="font-mono text-primary mb-6 text-sm uppercase tracking-wider">
-            AI for Productivity
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {aiTools.map((tool, index) => (
-              <motion.div
-                key={tool.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-                className="p-4 bg-card border border-border rounded-lg card-hover"
-              >
-                <p className="font-semibold mb-1">{tool.name}</p>
-                <p className="text-sm text-muted-foreground">{tool.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-        <div className="mt-10">
-          <h3 className="font-mono text-primary mb-6 text-sm uppercase tracking-wider">LLM APIs & Automation</h3>
-          <div className="flex flex-wrap gap-3">
-            {llmApis.map((name) => <span key={name} className="px-4 py-2 bg-card border border-border rounded-lg font-mono text-sm">{name}</span>)}
-          </div>
-        </div>
+const SkillsSection = () => (
+  <section id="skills" className="py-16 md:py-20 border-t border-border">
+    <div className="section-container">
+      <p className="eyebrow">03 / TOOLKIT</p><h2 className="section-title">The tools behind the work.</h2>
+      <p className="section-description">Technologies I use across professional work and personal projects.</p>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {groups.map(({ title, icon: Icon, items }) => <div key={title} className="rounded-2xl border border-border bg-card p-6"><h3 className="font-semibold flex items-center gap-3 mb-5"><Icon className="w-5 h-5 text-primary" />{title}</h3><div className="flex flex-wrap gap-2">{items.map(name => <span key={name} className="tech-chip">{name}</span>)}</div></div>)}
       </div>
-    </section>
-  );
-};
-
+      <p className="text-sm text-muted-foreground mt-5">Additional languages: SQL, C++, and Python.</p>
+      <div className="mt-5 grid md:grid-cols-2 gap-6 rounded-2xl bg-secondary/30 border border-border p-6">
+        <div><h3 className="font-semibold flex gap-2 items-center mb-3"><Sparkles className="w-4 h-4 text-primary" /> AI for coding & research</h3><p className="text-sm leading-7 text-muted-foreground">ChatGPT · Claude · Gemini · GitHub Copilot · Cursor · Perplexity</p></div>
+        <div><h3 className="font-semibold flex gap-2 items-center mb-3"><Workflow className="w-4 h-4 text-primary" /> APIs & automation</h3><p className="text-sm leading-7 text-muted-foreground">Gemini API · Groq API · OpenRouter · LLM API routing · Workflow automation</p></div>
+      </div>
+    </div>
+  </section>
+);
 export default SkillsSection;

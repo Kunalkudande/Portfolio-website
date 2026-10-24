@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
 ];
 
@@ -30,9 +30,13 @@ const Navbar = () => {
         isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : ""
       }`}
     >
-      <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-mono text-xl font-bold gradient-text">
-          {"<KK />"}
+      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#home" aria-label="Kunal Kudande — home" className="group inline-flex items-center gap-3 shrink-0" onClick={() => setIsMobileMenuOpen(false)}>
+          <img src="/favicon.svg" alt="" width="44" height="44" className="w-11 h-11 transition-transform duration-200 group-hover:-rotate-3" />
+          <span className="flex flex-col gap-1">
+            <span className="text-sm font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">Kunal Kudande<span className="text-primary">.</span></span>
+            <span className="font-mono text-[9px] tracking-[0.17em] text-muted-foreground uppercase">Software Engineer</span>
+          </span>
         </a>
 
         {/* Desktop Nav */}
@@ -62,6 +66,8 @@ const Navbar = () => {
           className="md:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -74,6 +80,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
+            id="mobile-navigation"
             className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
           >
             <ul className="flex flex-col items-center gap-6 py-8">

@@ -1,5 +1,3 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { ExternalLink, Github, Chrome } from "lucide-react";
 
 const projects = [
@@ -71,110 +69,38 @@ const projects = [
   },
 ];
 
-const ProjectsSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section id="projects" className="py-20" ref={ref}>
-      <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            <span className="font-mono text-primary mr-2">02.</span>
-            Projects
-          </h2>
-          <p className="text-muted-foreground mb-12 max-w-2xl">
-            Full-stack applications, AI workflows, and automation projects, alongside browser extensions.
-          </p>
-        </motion.div>
-
-        <div className="space-y-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
-              className="group relative bg-card border border-border rounded-xl p-6 md:p-8 card-hover"
-            >
-              <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    {project.type === "extension" ? (
-                      <Chrome className="w-5 h-5 text-primary" />
-                    ) : (
-                      <ExternalLink className="w-5 h-5 text-primary" />
-                    )}
-                    <span className="font-mono text-xs text-primary uppercase tracking-wider">
-                      {project.type === "extension" ? "Chrome Extension" : project.type}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  {project.period && <p className="font-mono text-xs text-primary mb-4">{project.period}</p>}
-
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <ul className="space-y-2 mb-6">
-                    {project.highlights.map((highlight) => (
-                      <li key={highlight} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <span className="w-1.5 h-1.5 mt-1.5 shrink-0 bg-primary rounded-full" />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-secondary/50 rounded-md font-mono text-xs text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-4">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Github className="w-4 h-4" />
-                        View Code
-                      </a>
-                    )}
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+const ProjectsSection = () => (
+  <section id="projects" className="py-16 md:py-20 border-t border-border">
+    <div className="section-container">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div><p className="eyebrow">01 / SELECTED WORK</p><h2 className="section-title mb-0">Ideas turned into working software.</h2></div>
+        <p className="text-sm text-muted-foreground max-w-xs">From customer-facing products to the workflows running behind them.</p>
       </div>
-    </section>
-  );
-};
-
+      <div className="grid md:grid-cols-2 gap-5">
+        {projects.map((project, index) => (
+          <article key={project.title} className={`group rounded-2xl border border-border bg-card overflow-hidden transition-colors hover:border-primary/40 ${index === 0 ? "md:col-span-2" : ""}`}>
+            <div className={index === 0 ? "grid lg:grid-cols-[1fr_0.85fr]" : ""}>
+              {index === 0 && <div className="lg:order-2 relative min-h-64 p-7 md:p-10 flex flex-col justify-center bg-gradient-to-br from-primary/10 via-secondary/40 to-card border-b lg:border-b-0 lg:border-l border-border">
+                <div className="font-mono text-[10px] tracking-widest text-primary mb-8">BIKERSBRAIN / PRODUCT OVERVIEW</div>
+                <div className="flex items-center gap-3 mb-7"><div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">B.</div><div><p className="text-xl font-bold tracking-tight">Made for the ride.</p><p className="text-xs text-muted-foreground mt-1">Two-wheeler parts & accessories</p></div></div>
+                <div className="grid grid-cols-3 gap-2 text-center text-xs">{["Storefront", "Backend APIs", "PostgreSQL"].map((label, i) => <div key={label} className="rounded-xl bg-background/70 border border-border p-3"><span className="font-mono text-primary text-[10px]">0{i + 1}</span><p className="mt-2">{label}</p></div>)}</div>
+                <p className="text-xs text-muted-foreground mt-5">Shopping · Payments · Inventory · Admin</p>
+              </div>}
+              <div className="p-6 md:p-8 flex flex-col h-full">
+                <div className="flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-widest mb-4">{project.type === "extension" ? <Chrome className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}{project.type === "extension" ? "Chrome Extension" : project.type}{index === 0 && <span className="ml-auto border border-primary/25 rounded-full px-2 py-1">Featured</span>}</div>
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight mb-2">{project.title}</h3>
+                {project.period && <p className="text-xs text-muted-foreground mb-4">{project.period}</p>}
+                <p className="text-sm text-muted-foreground mb-5 leading-relaxed">{project.description}</p>
+                <ul className="space-y-2 mb-5">{project.highlights.slice(0, index === 0 ? 3 : 2).map(item => <li key={item} className="flex gap-2 text-sm text-muted-foreground"><span className="text-primary shrink-0">↗</span>{item}</li>)}</ul>
+                {project.highlights.length > (index === 0 ? 3 : 2) && <details className="mb-5 text-sm text-muted-foreground"><summary className="cursor-pointer text-foreground hover:text-primary w-fit">More project details</summary><ul className="mt-3 space-y-2 pl-4 list-disc">{project.highlights.slice(index === 0 ? 3 : 2).map(item => <li key={item}>{item}</li>)}</ul></details>}
+                <div className="flex flex-wrap gap-1.5 mt-auto pt-2">{project.tech.slice(0, 5).map(tech => <span className="tech-chip" key={tech}>{tech}</span>)}{project.tech.length > 5 && <details className="text-xs"><summary className="tech-chip cursor-pointer hover:text-primary">+{project.tech.length - 5} tools</summary><div className="flex flex-wrap gap-1.5 mt-2">{project.tech.slice(5).map(tech => <span className="tech-chip" key={tech}>{tech}</span>)}</div></details>}</div>
+                {(project.github || project.live) && <div className="flex flex-wrap gap-3 mt-6">{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer" className="primary-button !py-2">Live demo <ExternalLink className="w-3.5 h-3.5" /></a>}{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" className="secondary-button !py-2"><Github className="w-3.5 h-3.5" /> View code</a>}</div>}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 export default ProjectsSection;

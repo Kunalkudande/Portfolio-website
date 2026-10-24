@@ -22,7 +22,7 @@
     --secondary-foreground: 210 20% 85%;
 
     --muted: 222 30% 12%;
-    --muted-foreground: 215 20% 55%;
+    --muted-foreground: 215 18% 68%;
 
     --accent: 174 72% 56%;
     --accent-foreground: 222 47% 5%;
@@ -55,7 +55,7 @@
     --secondary: 222 30% 15%;
     --secondary-foreground: 210 20% 85%;
     --muted: 222 30% 12%;
-    --muted-foreground: 215 20% 55%;
+    --muted-foreground: 215 18% 68%;
     --accent: 174 72% 56%;
     --accent-foreground: 222 47% 5%;
     --destructive: 0 62% 30%;
@@ -109,7 +109,7 @@
   }
 
   .section-container {
-    @apply max-w-5xl mx-auto px-6 py-20;
+    @apply max-w-6xl mx-auto px-5 sm:px-8;
   }
 
   .card-hover {
@@ -119,4 +119,24 @@
   .card-hover:hover {
     box-shadow: var(--glow-accent);
   }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  section[id] { scroll-margin-top: 5rem; }
+  ::selection { background: hsl(var(--primary) / .25); }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 5px; border-radius: 6px; }
+}
+@layer components {
+  .eyebrow { @apply font-mono text-xs tracking-[0.18em] text-primary mb-3; }
+  .section-title { @apply text-3xl md:text-4xl font-semibold tracking-tight mb-4; }
+  .section-description { @apply text-muted-foreground max-w-xl leading-relaxed mb-8; }
+  .tech-chip { @apply inline-block rounded-md border border-border bg-secondary/30 px-2.5 py-1 text-xs text-muted-foreground; }
+  .primary-button { @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors; }
+  .secondary-button { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-card px-5 py-3 text-sm font-medium hover:border-primary/50 hover:text-primary transition-colors; }
+  .hero-grid { background-image: linear-gradient(hsl(var(--border) / .2) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / .2) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, black, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

@@ -1,136 +1,44 @@
-import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Code2, Trophy, Download, Mail } from "lucide-react";
+import { ArrowDownRight, Download, Github, Linkedin, MapPin, ArrowUpRight } from "lucide-react";
 
-const socialLinks = [
-  { icon: Github, href: "https://github.com/Kunalkudande", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/kunal-kudande/", label: "LinkedIn" },
-  { icon: Twitter, href: "https://x.com/KunalKud09", label: "X (Twitter)" },
-  { icon: Code2, href: "https://leetcode.com/u/kudandekunal1410/", label: "LeetCode" },
-  { icon: Trophy, href: "https://www.hackerrank.com/profile/kudandekunal1410", label: "HackerRank" },
-];
-
-const HeroSection = () => {
-  return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20" />
-      
-      {/* Glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-      
-      <div className="section-container relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          {/* Photo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="w-48 h-48 lg:w-64 lg:h-64 rounded-full gradient-border overflow-hidden bg-card">
-              <img
-                src="/kunal-photo.jpeg"
-                alt="Kunal Kudande"
-                className="w-full h-full object-cover object-top"
-                onError={(e) => {
-                  e.currentTarget.src = "https://ui-avatars.com/api/?name=KK&size=256&background=2dd4bf&color=0a0f1c&font-size=0.4&bold=true";
-                }}
-              />
-            </div>
-            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-primary rounded-full animate-pulse-glow" />
-          </motion.div>
-
-          {/* Content */}
-          <div className="text-center lg:text-left">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="font-mono text-primary mb-4"
-            >
-              Hi, my name is
-            </motion.p>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4"
-            >
-              Kunal Kudande
-              <span className="animate-blink text-primary">_</span>
-            </motion.h1>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold text-muted-foreground mb-6"
-            >
-              Software Engineer | Full Stack
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-muted-foreground max-w-lg mb-8 text-lg"
-            >
-              I build full-stack applications with React, TypeScript, Node.js, NestJS,
-              and PostgreSQL. My work spans multi-tenant SaaS, backend services,
-              e-commerce, and practical AI workflow automation.
-            </motion.p>
-
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
-              <a href="/Kunal_Kudande_Resume.pdf" download className="inline-flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
-                <Download className="w-4 h-4" /> Download Resume
-              </a>
-              <a href="mailto:kudandekunal1410@gmail.com" className="inline-flex items-center gap-2 px-5 py-3 border border-border rounded-lg hover:border-primary transition-colors">
-                <Mail className="w-4 h-4" /> Get in Touch
-              </a>
-            </div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex gap-4 justify-center lg:justify-start"
-            >
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-lg bg-secondary/50 border border-border text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:glow"
-                  aria-label={link.label}
-                >
-                  <link.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </motion.div>
+const HeroSection = () => (
+  <section id="home" className="relative overflow-hidden pt-32 pb-16 md:pt-44 md:pb-24">
+    <div className="hero-grid absolute inset-0 pointer-events-none" />
+    <div className="section-container relative">
+      <div className="grid lg:grid-cols-[1.4fr_0.8fr] gap-12 lg:gap-20 items-center">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-3 py-1.5 text-xs text-primary mb-7"><span className="h-1.5 w-1.5 rounded-full bg-primary" /> Open to software engineering opportunities</span>
+          <p className="font-mono text-sm text-muted-foreground mb-3">HELLO, I'M KUNAL KUDANDE</p>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.08]">Building products.<br /><span className="text-primary">Connecting systems.</span></h1>
+          <h2 className="text-xl md:text-2xl font-medium mt-6 mb-4">Software Engineer <span className="text-muted-foreground">/ Full Stack</span></h2>
+          <p className="text-muted-foreground max-w-xl leading-relaxed">I build web applications, backend services, and practical AI workflows. Currently working on multi-tenant SaaS at BeeLogical, with React, TypeScript, Node.js, and NestJS.</p>
+          <div className="flex flex-wrap gap-3 mt-8">
+            <a href="#projects" className="primary-button">Explore my work <ArrowDownRight className="w-4 h-4" /></a>
+            <a href="/Kunal_Kudande_Resume.pdf" download className="secondary-button"><Download className="w-4 h-4" /> Download resume</a>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-7 text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5"><MapPin className="w-4 h-4" /> Pune, India</span>
+            <a href="https://github.com/Kunalkudande" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary"><Github className="w-4 h-4" /> GitHub</a>
+            <a href="https://www.linkedin.com/in/kunal-kudande/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary"><Linkedin className="w-4 h-4" /> LinkedIn</a>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-primary rounded-full mt-2"
-            />
+        <div className="relative max-w-sm w-full mx-auto lg:ml-auto">
+          <div className="absolute -inset-5 bg-primary/10 blur-3xl rounded-full" />
+          <div className="relative rounded-3xl border border-border overflow-hidden bg-card">
+            <img src="/kunal-photo.jpeg" alt="Kunal Kudande" className="w-full h-72 sm:h-80 object-cover object-top" />
+            <div className="p-5 border-t border-border">
+              <p className="font-semibold">Kunal Kudande</p>
+              <p className="text-sm text-muted-foreground mt-1">Jr. Software Engineer @ BeeLogical</p>
+              <div className="flex items-center gap-2 mt-4 text-xs font-mono text-primary"><span className="w-1.5 h-1.5 bg-primary rounded-full" /> FULL STACK · BACKEND · AUTOMATION</div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </section>
-  );
-};
-
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 border-t border-border mt-14 pt-7">
+        <div><p className="font-semibold">Production SaaS</p><p className="text-sm text-muted-foreground mt-1">Multi-tenancy, APIs & access control</p></div>
+        <div><p className="font-semibold">250+ problems solved</p><p className="text-sm text-muted-foreground mt-1">LeetCode & GeeksforGeeks</p></div>
+        <a href="#experience" className="group"><p className="font-semibold flex gap-2 items-center">Rockstar Rookie 2025 <ArrowUpRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" /></p><p className="text-sm text-muted-foreground mt-1">Recognized at BeeLogical</p></a>
+      </div>
+    </div>
+  </section>
+);
 export default HeroSection;
